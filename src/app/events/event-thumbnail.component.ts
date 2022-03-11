@@ -12,8 +12,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <!-- It will shortcircut everything after so no need to continiously put ? after ever properties -->
       <!-- but for example if u want the second property location to be nullable and will only display if there is one 
           you must chain it -->
-      <!-- In this example it is saying event can be null but if it is there. This will only display if location is populated -->
+      <!-- In this example it is saying if there is an event and if there is a location then show address  -->
       <div>Location: {{ event?.location?.address }}</div>
+      <!-- Meanwhile this example it is saying there is an event and if the event has a  location then show address  -->
+      <div>Location: {{ event.location?.address }}</div>
     </div>
   </div> `,
 })
