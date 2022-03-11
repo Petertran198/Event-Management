@@ -1,12 +1,3 @@
 <h1>Upcoming Angular Events</h1>
 <hr />
-
-<!--You can set a template variable in your parent component to communicate and access child components properties and method -->
-<event-thumbnail #thumbnail [event]="event"></event-thumbnail>
-
-<!--Get access to your child component's event property and then use that data in the child to communicate with parent component-->
-<button (click)="logInfoFromParent(thumbnail.somePropertiesInChildComponent)">
-  click
-</button>
-<!--Directly call a method from ur child component -->
-<button (click)="thumbnail.methodInChild()">click</button>
+<event-thumbnail [event]="event"></event-thumbnail>
