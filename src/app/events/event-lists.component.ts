@@ -19,7 +19,7 @@ export class EventListsComponent {
     },
   };
 
-  handleEventClicked(event) {
-    console.log(event);
+  logInfoFromParent(childInfo) {
+    console.log(childInfo);
   }
 }
