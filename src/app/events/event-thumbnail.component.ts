@@ -6,8 +6,15 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <div class="well hoverwell thumbnail">
       <h1>{{ event?.name }}</h1>
       <div>Date: {{ event?.name }}</div>
-      <div [ngSwitch]="event?.time" [class.green]="event?.time === '8:00 am'">
-        <!-- You can conditionally render a class if it meets a condition-->
+
+      <!-- This will display the .green class and .random-class if it meets this condition -->
+      <div
+        [ngSwitch]="event?.time"
+        [ngClass]="{
+          green: event?.time === '8:00 am',
+          'random-class': event?.time === '8:00 am'
+        }"
+      >
         Time: {{ event?.time }}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
