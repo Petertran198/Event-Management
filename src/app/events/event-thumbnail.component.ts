@@ -8,13 +8,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div>Date: {{ event?.name }}</div>
 
       <!-- This will display the .green class and .random-class if it meets this condition -->
-      <div
-        [ngSwitch]="event?.time"
-        [ngClass]="{
-          green: event?.time === '8:00 am',
-          'random-class': event?.time === '8:00 am'
-        }"
-      >
+      <div [ngSwitch]="event?.time" [ngClass]="styleForEarlyTime()">
         Time: {{ event?.time }}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
@@ -39,4 +33,9 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class EventThumbnailComponent {
   @Input() event: any;
+
+  styleForEarlyTime() {
+    const isEarly: boolean = this.event?.time === '8:00 am';
+    return { green: isEarly, 'display-1': isEarly };
+  }
 }
