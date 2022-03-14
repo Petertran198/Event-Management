@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ToastrService } from './common/toastr.service';
 
 import { EventAppComponent } from './events-app.component';
+import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListsComponent } from './events/event-lists.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
 import { EventService } from './events/shared/event.service';
@@ -20,7 +21,7 @@ import { appRoutes } from './routes';
 
   imports: [BrowserModule, RouterModule.forRoot(appRoutes)], // <-- Used to import other modules
 
-  providers: [EventService, ToastrService], // <-- To add services here
+  providers: [EventService, ToastrService, EventRouteActivator], // <-- To add services here
 
   bootstrap: [EventAppComponent],
 })
