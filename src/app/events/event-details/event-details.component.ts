@@ -28,6 +28,7 @@ export class EventDetailComponent implements OnInit {
       this.event = this.eventService.getEvent(id);
     });
 
+    //Another way to add routes to url
     // this.event = this.eventService.getEvent(
     //   Number(this.route.snapshot.params['id'])
     // );
