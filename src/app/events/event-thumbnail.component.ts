@@ -6,9 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     <div class="well hoverwell thumbnail">
       <h1>{{ event?.name }}</h1>
       <div>Date: {{ event?.name }}</div>
-
-      <!-- This will display the .green class and .random-class if it meets this condition -->
-      <div [ngSwitch]="event?.time" [ngClass]="styleForEarlyTime()">
+      <div [ngSwitch]="event?.time">
         Time: {{ event?.time }}
         <span *ngSwitchCase="'8:00 am'">(Early Start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late Start)</span>
