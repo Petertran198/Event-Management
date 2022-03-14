@@ -21,9 +21,15 @@ export class EventDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    // Two ways to get routes from url
+
     this.route.paramMap.subscribe((parms) => {
       const id = Number(parms.get('id'));
       this.event = this.eventService.getEvent(id);
     });
+
+    // this.event = this.eventService.getEvent(
+    //   Number(this.route.snapshot.params['id'])
+    // );
   }
 }
