@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
   templateUrl: './create-event.component.html',
 })
 export class CreateEventComponent {
+  isDirtyState: boolean = true;
+
   constructor(private router: Router) {}
 
   onCancel() {
