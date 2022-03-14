@@ -2,8 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'event-app-root',
-  template: ` <navbar></navbar>
-    <event-list></event-list>`,
+  template: `
+    <navbar></navbar>
+    <router-outlet></router-outlet>
+  `,
 })
 export class EventAppComponent {
   title = 'Event Management';

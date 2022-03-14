@@ -4,7 +4,18 @@ import { EventService } from './shared/event.service';
 
 @Component({
   selector: 'event-list',
-  templateUrl: './event-lists.component.html',
+  template: `
+    <h1>Upcoming Angular Events</h1>
+    <hr />
+    <div class="row">
+      <div class="col-md-5" *ngFor="let event of events">
+        <event-thumbnail
+          (click)="handleThumbnailClick(event.name)"
+          [event]="event"
+        ></event-thumbnail>
+      </div>
+    </div>
+  `,
 })
 export class EventListsComponent implements OnInit {
   events = [];
