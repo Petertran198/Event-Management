@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ToastrService } from './common/toastr.service';
 
 import { EventAppComponent } from './events-app.component';
 import { EventListsComponent } from './events/event-lists.component';
@@ -16,7 +17,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 
   imports: [BrowserModule], // <-- Used to import other modules
 
-  providers: [EventService], // <-- To add services here
+  providers: [EventService, ToastrService], // <-- To add services here
 
   bootstrap: [EventAppComponent],
 })

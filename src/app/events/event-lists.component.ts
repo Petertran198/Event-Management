@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from '../common/toastr.service';
 import { EventService } from './shared/event.service';
 
 @Component({
@@ -7,10 +8,19 @@ import { EventService } from './shared/event.service';
 })
 export class EventListsComponent implements OnInit {
   events = [];
-  //Short hand to initalize and inject our service to get event data
-  constructor(private eventService: EventService) {}
+
+  //Short hand to initalize and inject our services
+  //Get event data and inject a third party library.
+  constructor(
+    private eventService: EventService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.events = this.eventService.getEvents();
+  }
+
+  handleThumbnailClick(eventName: string) {
+    this.toastrService.success(eventName);
   }
 }
