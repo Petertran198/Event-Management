@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ToastrService } from './common/toastr.service';
 import { EventAppComponent } from './events-app.component';
+
 import {
   CreateEventComponent,
   EventRouteActivator,
