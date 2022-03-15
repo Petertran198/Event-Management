@@ -1,13 +1,15 @@
 import { Routes } from '@angular/router';
 import { Error404Component } from './errors/404.component';
-import { CreateEventComponent } from './events/create-event.component';
-import { EventDetailComponent } from './events/event-details/event-details.component';
-import { EventRouteActivator } from './events/event-details/event-route-activator.service';
-import { EventListsComponent } from './events/event-lists.component';
-import { EventsListResolver } from './events/events-list-resolver.service';
+import {
+  CreateEventComponent,
+  EventRouteActivator,
+  EventListsComponent,
+  EventsListResolver,
+  EventDetailComponent,
+} from './events/index';
 
-//canActivate =  T = route is blocked, F = route is unblocked
-//canDeactivate = T = you can leave page, F = you can not leave page
+//canActivate =  True = route is blocked, False = route is unblocked
+//canDeactivate = True = you can leave page, False = you can not leave page
 export const appRoutes: Routes = [
   {
     path: 'events/new',
