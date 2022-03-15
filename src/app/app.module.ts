@@ -15,6 +15,7 @@ import {
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { appRoutes } from './routes';
+import { AuthService } from './user/auth.service';
 @NgModule({
   declarations: [
     EventAppComponent,
@@ -30,6 +31,7 @@ import { appRoutes } from './routes';
     ToastrService,
     EventRouteActivator,
     EventsListResolver,
+    AuthService,
     { provide: 'canDeactivateEvent', useValue: checkIfCanDeactivateEvent },
   ], // <-- To add services here.
   // { provide: ..., useValue:..}  long hand syntax {provide: service1, useValue: callService1 }

@@ -9,7 +9,11 @@
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
       <div class="form-group">
         <label for="firstName">First Name:</label>
-        <!-- NgModel require a name attribute -->
+        <!-- NgModel require a name attribute 
+            () = Get data from html to component
+            [] = getting data from component to html 
+            [()] = two way binding getting data from both html and component 
+        -->
         <input
           (ngModel)="(userName)"
           id="firstName"

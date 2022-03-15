@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { AuthService } from '../user/auth.service';
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
@@ -23,5 +23,6 @@ import { Component } from '@angular/core';
   ],
 })
 export class NavbarComponent {
-  constructor() {}
+  // We made it public so we can use it in the html
+  constructor(public auth: AuthService) {}
 }
