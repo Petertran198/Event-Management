@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
+import { IEvent } from './shared';
 @Component({
   selector: 'event-thumbnail',
   template: `<div>
@@ -16,9 +16,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
       <div [hidden]="!event?.location">
         Location: {{ event?.location?.address }}
       </div>
-      <div [hidden]="!event?.locationUrl">
-        Online Url: {{ event.locationUrl }}
-      </div>
+      <div [hidden]="!event?.onlineUrl">Online Url: {{ event.onlineUrl }}</div>
     </div>
   </div> `,
   styles: [
@@ -30,7 +28,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   ],
 })
 export class EventThumbnailComponent {
-  @Input() event: any;
+  @Input() event: IEvent;
 
   styleForEarlyTime() {
     const isEarly: boolean = this.event?.time === '8:00 am';
