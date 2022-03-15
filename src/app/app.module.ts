@@ -8,6 +8,7 @@ import { CreateEventComponent } from './events/create-event.component';
 import { EventRouteActivator } from './events/event-details/event-route-activator.service';
 import { EventListsComponent } from './events/event-lists.component';
 import { EventThumbnailComponent } from './events/event-thumbnail.component';
+import { EventsListResolver } from './events/events-list-resolver.service';
 import { EventService } from './events/shared/event.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { appRoutes } from './routes';
@@ -26,6 +27,7 @@ import { appRoutes } from './routes';
     EventService,
     ToastrService,
     EventRouteActivator,
+    EventsListResolver,
     { provide: 'canDeactivateEvent', useValue: checkIfCanDeactivateEvent },
   ], // <-- To add services here.
   // { provide: ..., useValue:..}  long hand syntax {provide: service1, useValue: callService1 }

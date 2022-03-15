@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from '../common/toastr.service';
-import { EventService } from './shared/event.service';
 
 @Component({
   selector: 'event-list',
@@ -18,17 +18,18 @@ import { EventService } from './shared/event.service';
   `,
 })
 export class EventListsComponent implements OnInit {
-  events = [];
+  events;
 
   //Short hand to initalize and inject our services
   //Get event data and inject a third party library.
   constructor(
-    private eventService: EventService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.events = this.eventService.getEvents();
+    // This waits until we get the event data preloaded in before displaying events
+    this.events = this.route.snapshot.data['eventsResolvedKey'];
   }
 
   handleThumbnailClick(eventName: string) {

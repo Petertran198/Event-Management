@@ -1,10 +1,16 @@
 import { Injectable } from '@angular/core';
-
+import { Subject } from 'rxjs';
 //Declare it a service by adding @Injectable class
 @Injectable()
 export class EventService {
   getEvents() {
-    return EVENTS;
+    let subject = new Subject();
+    //mimic async function
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    }, 1000);
+    return subject;
   }
 
   getEvent(id: number) {
