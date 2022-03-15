@@ -28,4 +28,13 @@ export const appRoutes: Routes = [
   },
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
+  // loadChildren takes two parts
+  // first is the path to the module
+  //Second follow # is the module class
+  // old way loadChildren: './user/user.module#UserModule' works in older angular version
+  {
+    path: 'user',
+    loadChildren: () =>
+      import('./user/user.module').then((module) => module.UserModule),
+  },
 ];

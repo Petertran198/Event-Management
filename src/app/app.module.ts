@@ -12,7 +12,6 @@ import { EventsListResolver } from './events/events-list-resolver.service';
 import { EventService } from './events/shared/event.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { appRoutes } from './routes';
-
 @NgModule({
   declarations: [
     EventAppComponent,
