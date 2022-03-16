@@ -7,8 +7,9 @@
       [formGroup]="profileFormGroup"
       (ngSubmit)="editProfile(profileFormGroup)"
     >
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{ error: isFirstNameInValid() }">
         <label for="firstName">First Name:</label>
+        <em *ngIf="isFirstNameInValid()">Required</em>
         <!--We also need to set these input to the FormGroup properties name-->
         <input
           formControlName="firstName"
@@ -20,6 +21,7 @@
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
+        <em *ngIf="isLastNameInValid()">Required</em>
         <!--We also need to set these input to the FormGroup properties name-->
         <input
           formControlName="lastName"
@@ -30,7 +32,13 @@
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="isFirstNameInValid() || isLastNameInValid()"
+      >
+        Save
+      </button>
       <button type="button" class="btn btn-default" (click)="onCancel()">
         Cancel
       </button>
