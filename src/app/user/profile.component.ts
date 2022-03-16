@@ -11,9 +11,9 @@ import { AuthService } from './auth.service';
         float: right;
         color: red;
       }
-      ,
-      .error input {
-        background-color: red;
+
+      .error {
+        border-color: red;
       }
     `,
   ],

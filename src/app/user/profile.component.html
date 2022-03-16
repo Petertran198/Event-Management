@@ -3,40 +3,22 @@
   <hr />
   <div class="col-md-4">
     <!-- Set the formGroup to the profileFormGroup -->
-    <form
-      [formGroup]="profileFormGroup"
-      (ngSubmit)="editProfile(profileFormGroup)"
-    >
-      <div class="form-group" [ngClass]="{ error: isFirstNameInValid() }">
+    <form [formGroup]="profileFormGroup" (ngSubmit)="editProfile(profileFormGroup)">
+      <div class="form-group">
         <label for="firstName">First Name:</label>
         <em *ngIf="isFirstNameInValid()">Required</em>
         <!--We also need to set these input to the FormGroup properties name-->
-        <input
-          formControlName="firstName"
-          id="firstName"
-          type="text"
-          class="form-control"
-          placeholder="First Name..."
-        />
+        <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..."
+          [ngClass]="{ 'error': isFirstNameInValid() }" />
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
         <em *ngIf="isLastNameInValid()">Required</em>
         <!--We also need to set these input to the FormGroup properties name-->
-        <input
-          formControlName="lastName"
-          id="lastName"
-          type="text"
-          class="form-control"
-          placeholder="Last Name..."
-        />
+        <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
       </div>
 
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="isFirstNameInValid() || isLastNameInValid()"
-      >
+      <button type="submit" class="btn btn-primary" [disabled]="isFirstNameInValid() || isLastNameInValid()">
         Save
       </button>
       <button type="button" class="btn btn-default" (click)="onCancel()">
