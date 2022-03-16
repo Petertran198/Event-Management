@@ -6,7 +6,7 @@
       To get data from a submitted form we add #loginForm to the form 
       Now #loginForm.values gives us access to the properties we have (ngModel) on
     -->
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
       <div class="form-group">
         <label for="firstName">First Name:</label>
         <!-- NgModel require a name attribute 
@@ -23,12 +23,12 @@
           >Required</em
         >
         <input
+          name="userName"
           (ngModel)="(userName)"
           id="firstName"
           type="text"
           class="form-control"
           placeholder="First Name..."
-          name="userName"
           required
         />
       </div>

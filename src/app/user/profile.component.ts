@@ -1,37 +1,39 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from './auth.service';
 @Component({
+  templateUrl: './profile.component.html',
   selector: 'profile',
-  template: `<div>
-    <h1>Edit Your Profile</h1>
-    <hr />
-    <div class="col-md-4">
-      <form autocomplete="off" novalidate>
-        <div class="form-group">
-          <label for="firstName">First Name:</label>
-          <input
-            id="firstName"
-            type="text"
-            class="form-control"
-            placeholder="First Name..."
-          />
-        </div>
-        <div class="form-group">
-          <label for="lastName">Last Name:</label>
-          <input
-            id="lastName"
-            type="text"
-            class="form-control"
-            placeholder="Last Name..."
-          />
-        </div>
-
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" class="btn btn-default">Cancel</button>
-      </form>
-    </div>
-  </div>`,
 })
-export class ProfileComponent {
-  constructor() {}
+export class ProfileComponent implements OnInit {
+  profileFormGroup: FormGroup;
+
+  constructor(private authService: AuthService, private router: Router) {}
+  ngOnInit(): void {
+    //This form will have two inputs firstName and lastName
+    //With the currentUser.firstName and lastName already inside
+    let firstName = new FormControl(this.authService.currentUser.firstName);
+    let lastName = new FormControl(this.authService.currentUser.lastName);
+    //Adding these controls to the form by creating a FormGroup
+    //This FormGroup has a firstName and lastName property and these properties VALUES
+    //are set to the firstName and LastName FormControl we set above
+    this.profileFormGroup = new FormGroup({
+      firstName: firstName,
+      lastName: lastName,
+    });
+  }
+
+  editProfile(form) {
+    this.authService.editProfile(
+      form.controls.firstName.value,
+      form.controls.lastName.value
+    );
+
+    this.router.navigate(['./events']);
+  }
+
+  onCancel() {
+    this.router.navigate(['./events']);
+  }
 }

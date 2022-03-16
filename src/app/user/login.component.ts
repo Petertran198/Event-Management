@@ -19,6 +19,7 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   login(form) {
-    console.log(form.controls);
+    this.authService.login(form.userName, form.password);
+    this.router.navigate(['/events']);
   }
 }

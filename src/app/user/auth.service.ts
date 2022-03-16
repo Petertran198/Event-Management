@@ -15,4 +15,9 @@ export class AuthService {
       userName: username,
     };
   }
+
+  editProfile(firstName, lastName) {
+    this.currentUser.firstName = firstName;
+    this.currentUser.lastName = lastName;
+  }
 }
