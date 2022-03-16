@@ -14,7 +14,6 @@ export class EventRouteActivator implements CanActivate {
     //Get from the route.parms the id of event
     //Convert that id to a number and return t/f if the event Exists if F redirect to 404 page
     const eventExist = this.eventService.getEvent(Number(route.params['id']));
-    console.log(eventExist);
     if (eventExist) {
       return true;
     } else {

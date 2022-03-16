@@ -7,7 +7,7 @@ import { userRoutes } from './user.routes';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login.component';
-
+import { CurrentUserRouteActivator } from './currentUser-route-activator.service';
 // New lazilyloaded module created
 //Notice how RouterModule is calling .forChild instead of forRoot
 @NgModule({
@@ -18,6 +18,6 @@ import { LoginComponent } from './login.component';
     RouterModule.forChild(userRoutes),
   ],
   declarations: [ProfileComponent, LoginComponent], // U declare all component here that belongs to this module
-  providers: [],
+  providers: [CurrentUserRouteActivator],
 })
 export class UserModule {}
