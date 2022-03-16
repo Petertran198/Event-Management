@@ -26,15 +26,15 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     //This form will have two inputs firstName and lastName
     //With the currentUser.firstName and lastName already inside
-    //Adding Validator to make it required field
-    this.firstName = new FormControl(
-      this.authService.currentUser.firstName,
-      Validators.required
-    );
-    this.lastName = new FormControl(
-      this.authService.currentUser.lastName,
-      Validators.required
-    );
+    //Adding Validator to make it required field, make it an array if u want multiple validators
+    this.firstName = new FormControl(this.authService.currentUser.firstName, [
+      Validators.required,
+      Validators.pattern('[a-zA-Z].*'),
+    ]);
+    this.lastName = new FormControl(this.authService.currentUser.lastName, [
+      Validators.required,
+      Validators.pattern('[a-zA-Z].*'),
+    ]);
     //Adding these controls to the form by creating a FormGroup
     //This FormGroup has a firstName and lastName property and these properties VALUES
     //are set to the firstName and LastName FormControl we set above

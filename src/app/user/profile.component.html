@@ -6,14 +6,17 @@
     <form [formGroup]="profileFormGroup" (ngSubmit)="editProfile(profileFormGroup)">
       <div class="form-group">
         <label for="firstName">First Name:</label>
-        <em *ngIf="isFirstNameInValid()">Required</em>
-        <!--We also need to set these input to the FormGroup properties name-->
+        <!--Show the first error if it is blank-->
+        <em *ngIf="isFirstNameInValid() && this.firstName.errors.required">Required</em>
+        <!--Show the second error if it doesnt start with the specified regex pattern-->
+        <em *ngIf="isFirstNameInValid() && this.firstName.errors.pattern">Must start with Letter</em>
         <input formControlName="firstName" id="firstName" type="text" class="form-control" placeholder="First Name..."
           [ngClass]="{ 'error': isFirstNameInValid() }" />
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <em *ngIf="isLastNameInValid()">Required</em>
+        <em *ngIf="isLastNameInValid() && this.lastName.errors.required">Required</em>
+        <em *ngIf="isLastNameInValid() && this.lastName.errors.pattern">Must start with Letter</em>
         <!--We also need to set these input to the FormGroup properties name-->
         <input formControlName="lastName" id="lastName" type="text" class="form-control" placeholder="Last Name..." />
       </div>
