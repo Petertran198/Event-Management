@@ -1,12 +1,12 @@
 <div>
-  <h1>Edit Your Profile</h1>
+  <h1>Login</h1>
   <hr />
   <div class="col-md-4">
     <!-- NgSubmit is angular's way of submitting a form it handles sideeffects of forms like refresh
       To get data from a submitted form we add #loginForm to the form 
       Now #loginForm.values gives us access to the properties we have (ngModel) on
     -->
-    <form #loginForm="ngForm" (ngSubmit)="login(loginForm.value)">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
       <div class="form-group">
         <label for="firstName">First Name:</label>
         <!-- NgModel require a name attribute 
@@ -14,6 +14,14 @@
             [] = getting data from component to html 
             [()] = two way binding getting data from both html and component 
         -->
+        <!-- We got to put username?.invalid because these properties fields are not always avilable in loginForm.controls -->
+        <em
+          *ngIf="
+            loginForm.controls.userName?.touched &&
+            loginForm.controls.userName?.invalid
+          "
+          >Required</em
+        >
         <input
           (ngModel)="(userName)"
           id="firstName"
@@ -21,10 +29,19 @@
           class="form-control"
           placeholder="First Name..."
           name="userName"
+          required
         />
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
+        <em
+          *ngIf="
+            loginForm.controls.password?.touched &&
+            loginForm.controls.password?.invalid
+          "
+          >Required</em
+        >
+
         <input
           name="password"
           (ngModel)="(password)"
@@ -32,10 +49,17 @@
           type="text"
           class="form-control"
           placeholder="Last Name..."
+          required
         />
       </div>
 
-      <button type="submit" class="btn btn-primary">Save</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="loginForm.untouched || loginForm.invalid"
+      >
+        Save
+      </button>
       <button type="button" class="btn btn-default">Cancel</button>
     </form>
   </div>
