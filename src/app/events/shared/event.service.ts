@@ -10,12 +10,20 @@ export class EventService {
     setTimeout(() => {
       subject.next(EVENTS);
       subject.complete();
-    }, 1000);
+    }, 100);
     return subject;
   }
 
   getEvent(id: number): IEvent {
     return EVENTS.find((event) => event.id === id);
+  }
+
+  saveEvent(event) {
+    event.id = 99;
+    event.session = [];
+    EVENTS.push(event);
+    console.log(event);
+    console.log(typeof EVENTS[5].date);
   }
 }
 

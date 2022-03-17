@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ToastrService } from './common/toastr.service';
 import { EventAppComponent } from './events-app.component';
 
 import {
+  CreateSessionsComponent,
   CreateEventComponent,
   EventRouteActivator,
   EventListsComponent,
@@ -22,9 +24,16 @@ import { AuthService } from './user/auth.service';
     EventListsComponent,
     EventThumbnailComponent,
     NavbarComponent,
+    CreateEventComponent,
+    CreateSessionsComponent,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
-  imports: [BrowserModule, RouterModule.forRoot(appRoutes)], // <-- Used to import other modules
+  imports: [
+    BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
+    RouterModule.forRoot(appRoutes),
+  ], // <-- Used to import other modules
 
   providers: [
     EventService,
@@ -48,5 +57,7 @@ export function checkIfCanDeactivateEvent(component: CreateEventComponent) {
     return window.confirm(
       'This page is not saved are you sure you want to leave?'
     );
+  } else {
+    return true;
   }
 }

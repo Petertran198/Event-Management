@@ -6,6 +6,7 @@ import {
   EventListsComponent,
   EventsListResolver,
   EventDetailComponent,
+  CreateSessionsComponent,
 } from './events/index';
 
 //canActivate =  True = route is blocked, False = route is unblocked
@@ -28,6 +29,7 @@ export const appRoutes: Routes = [
     component: EventDetailComponent,
     canActivate: [EventRouteActivator],
   },
+  { path: 'events/session/new', component: CreateSessionsComponent },
   { path: '404', component: Error404Component },
   { path: '', redirectTo: '/events', pathMatch: 'full' },
   // loadChildren takes two parts
