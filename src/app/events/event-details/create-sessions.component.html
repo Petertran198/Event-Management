@@ -41,8 +41,9 @@
         </div>
         <div class="form-group">
             <label for="abstract">Abstract:</label>
-            <em *ngIf="abstract.invalid && abstract.dirty">Required</em>
-
+            <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.required">Required</em>
+            <em *ngIf="abstract.invalid && abstract.dirty && abstract.errors.restrictedWords">Restricted words
+                {{abstract.errors.restrictedWords}}</em>
             <textarea id="abstract" rows=3 class="form-control" placeholder="abstract..." formControlName="abstract"
                 [ngClass]="{'error': abstract.invalid && abstract.dirty}"></textarea>
         </div>

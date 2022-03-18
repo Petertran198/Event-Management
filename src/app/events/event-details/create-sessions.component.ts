@@ -34,6 +34,7 @@ export class CreateSessionsComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
+      this.restrictedWord(['foo', 'bar']),
     ]);
 
     this.newSessionFormGroup = new FormGroup({
@@ -56,7 +57,29 @@ export class CreateSessionsComponent implements OnInit {
       abstract: form.abstract,
       voters: [],
     };
-    console.log(session);
-    console.log(this.newSessionFormGroup);
+  }
+
+  //Custom Validator
+  // restrictedWord(control: FormControl) {
+  //   return control.value.includes('foo') ? { restrictedWords: 'foo' } : null;
+  // }
+
+  //Custom Validator takes params the returns the validator
+  restrictedWord(words) {
+    //The returned validator is a function with the formControl to check validation
+    return function (control: FormControl) {
+      if (!words) return null;
+      const invalidWords = words
+        .map((word) => (control.value.includes(word) ? word : null))
+        .filter((word) => word != null);
+
+      console.log(control);
+      if (invalidWords.length > 0) {
+        // This is what gets returned in control.errors if there is an invalid word
+        return { restrictedWords: invalidWords };
+      } else {
+        return null;
+      }
+    };
   }
 }
