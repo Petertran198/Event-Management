@@ -4,15 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 import { ToastrService } from './common/toastr.service';
 import { EventAppComponent } from './events-app.component';
-
 import {
+  EventListsComponent,
+  EventThumbnailComponent,
+  EventService,
+  EventDetailComponent,
+  SessionDetailsComponent,
   CreateSessionsComponent,
   CreateEventComponent,
   EventRouteActivator,
-  EventListsComponent,
-  EventThumbnailComponent,
   EventsListResolver,
-  EventService,
 } from './events/index';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -26,6 +27,8 @@ import { AuthService } from './user/auth.service';
     NavbarComponent,
     CreateEventComponent,
     CreateSessionsComponent,
+    EventDetailComponent,
+    SessionDetailsComponent,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [
