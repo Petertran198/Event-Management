@@ -10,12 +10,16 @@ import { EventService } from '../shared/event.service';
       .event-image {
         height: 100px;
       }
+      .active {
+        background-color: DimGray;
+      }
     `,
   ],
 })
 export class EventDetailComponent implements OnInit {
   event;
   isAddingMode: boolean = false;
+  filteredBy: string = 'all';
 
   constructor(
     private eventService: EventService,
@@ -47,5 +51,9 @@ export class EventDetailComponent implements OnInit {
 
   handleCancelSession() {
     this.isAddingMode = false;
+  }
+
+  setActive(str) {
+    this.filteredBy = str;
   }
 }

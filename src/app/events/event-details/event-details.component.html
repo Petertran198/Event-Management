@@ -22,9 +22,18 @@
     </div>
   </div>
   <hr />
-  <div class="row">
+  <div class="row" style="margin-bottom: 10px;">
     <div class="col-md-2">
       <h3 style="margin:0">Sessions</h3>
+    </div>
+    <div class="col-md-8">
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'all'" (click)="setActive('all')">All</button>
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'beginners'"
+        (click)="setActive('beginners')">Beginners</button>
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'Intermediate'"
+        (click)="setActive('Intermediate')">Intermediate</button>
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'advance'"
+        (click)="setActive('advance')">Advance</button>
     </div>
     <div class="col-md-2">
       <a (click)="toggleAddMode()">Add Session</a>

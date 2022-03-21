@@ -14,6 +14,7 @@ import {
   CreateEventComponent,
   EventRouteActivator,
   EventsListResolver,
+  DurationPipe,
 } from './events/index';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -30,6 +31,7 @@ import { AuthService } from './user/auth.service';
     CreateSessionsComponent,
     EventDetailComponent,
     SessionDetailsComponent,
+    DurationPipe,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [
