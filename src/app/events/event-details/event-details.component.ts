@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { EventService } from '../shared/event.service';
 
 @Component({
@@ -15,9 +15,12 @@ import { EventService } from '../shared/event.service';
 })
 export class EventDetailComponent implements OnInit {
   event;
+  isAddingMode: boolean = false;
+
   constructor(
     private eventService: EventService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -27,10 +30,22 @@ export class EventDetailComponent implements OnInit {
       const id = Number(parms.get('id'));
       this.event = this.eventService.getEvent(id);
     });
-
     //Another way to add routes to url
     // this.event = this.eventService.getEvent(
     //   Number(this.route.snapshot.params['id'])
     // );
+  }
+
+  toggleAddMode() {
+    this.isAddingMode = !this.isAddingMode;
+  }
+
+  handleSaveSession(session) {
+    this.eventService.saveSession(this.event, session);
+    this.isAddingMode = false;
+  }
+
+  handleCancelSession() {
+    this.isAddingMode = false;
   }
 }

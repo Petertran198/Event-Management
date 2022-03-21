@@ -25,6 +25,13 @@ export class EventService {
     console.log(event);
     console.log(typeof EVENTS[5].date);
   }
+
+  saveSession(event, session) {
+    const e = this.getEvent(event.id);
+    const sessionId: number = e.sessions.length + 1;
+    session.id = sessionId;
+    e.sessions.push(session);
+  }
 }
 
 const EVENTS: IEvent[] = [

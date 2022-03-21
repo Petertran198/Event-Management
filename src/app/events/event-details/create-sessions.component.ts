@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ISession } from '../shared';
 
@@ -25,6 +25,8 @@ export class CreateSessionsComponent implements OnInit {
   abstract: FormControl;
   presenter: FormControl;
   newSessionFormGroup: FormGroup;
+  @Output() saveSession = new EventEmitter();
+  @Output() cancelSession = new EventEmitter();
 
   ngOnInit(): void {
     this.name = new FormControl('', Validators.required);
@@ -57,6 +59,7 @@ export class CreateSessionsComponent implements OnInit {
       abstract: form.abstract,
       voters: [],
     };
+    this.saveSession.emit(session);
   }
 
   //Custom Validator
@@ -81,5 +84,9 @@ export class CreateSessionsComponent implements OnInit {
         return null;
       }
     };
+  }
+
+  handleCancel() {
+    this.cancelSession.emit();
   }
 }

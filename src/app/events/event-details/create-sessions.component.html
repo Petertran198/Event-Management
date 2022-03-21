@@ -48,6 +48,6 @@
                 [ngClass]="{'error': abstract.invalid && abstract.dirty}"></textarea>
         </div>
         <button type="submit" class="btn btn-primary" [disabled]="newSessionFormGroup.invalid">Save</button>
-        <button type="button" class="btn btn-default">Cancel</button>
+        <button type="button" class="btn btn-default" (click)="handleCancel()">Cancel</button>
     </form>
 </div>
