@@ -4,9 +4,10 @@ import { Component, Input } from '@angular/core';
   selector: 'collapsible-well',
   template: `
     <div class="well pointable" (click)="toggleWell()">
-      <h4>{{ title }}</h4>
+      <!--Select attribute let us select which element to put in which ng-content in this case the first ng-content will display the element with the [well-title] attribute  -->
+      <ng-content select="[well-title]"></ng-content>
       <!-- ng-content is like {children} prop in react-->
-      <ng-content *ngIf="this.visiable"></ng-content>
+      <ng-content *ngIf="this.visiable" select="[well-body]"></ng-content>
     </div>
   `,
 })
