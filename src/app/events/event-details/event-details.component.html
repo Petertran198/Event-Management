@@ -27,20 +27,30 @@
       <h3 style="margin:0">Sessions</h3>
     </div>
     <div class="col-md-8">
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'all'" (click)="setActive('all')">All</button>
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'Beginner'"
-        (click)="setActive('Beginner')">Beginners</button>
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'Intermediate'"
-        (click)="setActive('Intermediate')">Intermediate</button>
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'Advanced'"
-        (click)="setActive('Advanced')">Advance</button>
+      <div class="btn-group btn-group-sm" role="group" style="margin: 0 15px;">
+        <button class="btn btn-default" [class.active]="this.sortedBy === 'Name'"
+          (click)="setSortedBy('Name')">Name</button>
+        <button class="btn btn-default" [class.active]="this.sortedBy === 'Ratings'"
+          (click)="setSortedBy('Ratings')">Ratings</button>
+      </div>
+      <div class="btn-group btn-group-sm" role="group" aria-label="...">
+        <button class="btn btn-default" [class.active]="this.filteredBy === 'all'"
+          (click)="setActive('all')">All</button>
+        <button class="btn btn-default" [class.active]="this.filteredBy === 'Beginner'"
+          (click)="setActive('Beginner')">Beginners</button>
+        <button class="btn btn-default" [class.active]="this.filteredBy === 'Intermediate'"
+          (click)="setActive('Intermediate')">Intermediate</button>
+        <button class="btn btn-default" [class.active]="this.filteredBy === 'Advanced'"
+          (click)="setActive('Advanced')">Advance</button>
+      </div>
     </div>
     <div class="col-md-2">
       <a (click)="toggleAddMode()">Add Session</a>
     </div>
   </div>
-  <session-detail *ngIf="this.isAddingMode === false " [sessions]="event?.sessions" [filteredBy]="this.filteredBy">
-  </session-detail>
+  <session-details *ngIf="this.isAddingMode === false " [sessions]="event?.sessions" [filteredBy]="this.filteredBy"
+    [sortedBy]="this.sortedBy">
+  </session-details>
   <create-sessions *ngIf="this.isAddingMode" (saveSession)="handleSaveSession($event)"
     (cancelSession)="handleCancelSession()"></create-sessions>
 </div>

@@ -20,6 +20,7 @@ export class EventDetailComponent implements OnInit {
   event;
   isAddingMode: boolean = false;
   filteredBy: string = 'all';
+  sortedBy: string = 'Name';
 
   constructor(
     private eventService: EventService,
@@ -55,5 +56,9 @@ export class EventDetailComponent implements OnInit {
 
   setActive(str) {
     this.filteredBy = str;
+  }
+
+  setSortedBy(str) {
+    this.sortedBy = str;
   }
 }
