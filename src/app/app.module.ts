@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { ToastrService } from './common/toastr.service';
+import { ToastrService, CollapsibleWellComponent } from './common/index';
 import { EventAppComponent } from './events-app.component';
 import {
   EventListsComponent,
@@ -21,6 +21,7 @@ import { appRoutes } from './routes';
 import { AuthService } from './user/auth.service';
 @NgModule({
   declarations: [
+    CollapsibleWellComponent,
     EventAppComponent,
     EventListsComponent,
     EventThumbnailComponent,
