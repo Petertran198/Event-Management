@@ -1,4 +1,4 @@
-<div class="row" *ngFor="let session of sessions">
+<div class="row" *ngFor="let session of filteredSessions">
     <div class="col-md-10">
         <collapsible-well [title]="session.name">
             <!-- well-title & well-body are attrbute selectors so we know which elemnt portion to display when u have more than 1 ng-content-->

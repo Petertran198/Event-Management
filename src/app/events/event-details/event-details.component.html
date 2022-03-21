@@ -28,18 +28,19 @@
     </div>
     <div class="col-md-8">
       <button class="btn btn-default" [class.active]="this.filteredBy === 'all'" (click)="setActive('all')">All</button>
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'beginners'"
-        (click)="setActive('beginners')">Beginners</button>
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'Beginner'"
+        (click)="setActive('Beginner')">Beginners</button>
       <button class="btn btn-default" [class.active]="this.filteredBy === 'Intermediate'"
         (click)="setActive('Intermediate')">Intermediate</button>
-      <button class="btn btn-default" [class.active]="this.filteredBy === 'advance'"
-        (click)="setActive('advance')">Advance</button>
+      <button class="btn btn-default" [class.active]="this.filteredBy === 'Advanced'"
+        (click)="setActive('Advanced')">Advance</button>
     </div>
     <div class="col-md-2">
       <a (click)="toggleAddMode()">Add Session</a>
     </div>
   </div>
-  <session-detail *ngIf="this.isAddingMode === false " [sessions]="event?.sessions"></session-detail>
+  <session-detail *ngIf="this.isAddingMode === false " [sessions]="event?.sessions" [filteredBy]="this.filteredBy">
+  </session-detail>
   <create-sessions *ngIf="this.isAddingMode" (saveSession)="handleSaveSession($event)"
     (cancelSession)="handleCancelSession()"></create-sessions>
 </div>
