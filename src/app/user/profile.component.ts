@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Form, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from './auth.service';
+import { TOASTR_TOKEN, IToastr } from '../common';
 @Component({
   templateUrl: './profile.component.html',
   selector: 'profile',
@@ -22,7 +23,11 @@ export class ProfileComponent implements OnInit {
   profileFormGroup: FormGroup;
   firstName: FormControl;
   lastName: FormControl;
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    @Inject(TOASTR_TOKEN) private toastr: IToastr //This is calling the Toastr_Token which is a service that returns the global toastr object
+  ) {}
   ngOnInit(): void {
     //This form will have two inputs firstName and lastName
     //With the currentUser.firstName and lastName already inside
@@ -49,7 +54,7 @@ export class ProfileComponent implements OnInit {
       form.controls.firstName.value,
       form.controls.lastName.value
     );
-    this.router.navigate(['./events']);
+    this.toastr.success('Updated');
   }
 
   onCancel() {
