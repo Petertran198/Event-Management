@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EventService } from '../events';
 import { AuthService } from '../user/auth.service';
 @Component({
   selector: 'navbar',
@@ -23,6 +24,13 @@ import { AuthService } from '../user/auth.service';
   ],
 })
 export class NavbarComponent {
+  searchTerm;
   // We made it public so we can use it in the html
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private eventService: EventService) {}
+
+  handleFormSubmit(term) {
+    this.eventService.getSessionsBySearchTerm(term).subscribe((data) => {
+      console.log(data);
+    });
+  }
 }

@@ -55,7 +55,7 @@ let toastr: IToastr = window['toastr'];
     EventsListResolver,
     AuthService,
     // { provide: ..., useValue:..}  long hand syntax {provide: service1, useValue: callService1 }
-    // It is saying when service1 is request use callService1 to fullfill it
+    // It is saying when service1 is request use callService1 obj to fullfill it
     { provide: 'canDeactivateEvent', useValue: checkIfCanDeactivateEvent },
     //Allow for us to create a service for toastr by only calling the global toastr object, and not needing a class
     //when TOASTR_TOKEN is called use the global toastr object we created above,

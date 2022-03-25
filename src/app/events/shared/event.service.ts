@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { IEvent } from './event.model';
+import { IEvent, ISession } from './event.model';
 //Declare it a service by adding @Injectable class
 @Injectable()
 export class EventService {
@@ -31,6 +31,32 @@ export class EventService {
     const sessionId: number = e.sessions.length + 1;
     session.id = sessionId;
     e.sessions.push(session);
+  }
+
+  getSessionsBySearchTerm(term: string) {
+    const termLowered = term.toLowerCase();
+    let results: ISession[] = [];
+    //Loop through each events to get sessions data
+    //The loop through sessions data and filter by session name
+    EVENTS.forEach((event) => {
+      let matchingSessionSearched = event.sessions.filter((session) => {
+        // if the term is apart of the session name return it
+        return session.name.toLowerCase().indexOf(termLowered) > -1;
+      });
+      //ISession instance does not have eventId so we have to explictly convert it back to type any to add eventID to session
+      //This is because we will need the eventId for the search functionality later on
+      matchingSessionSearched.map((session: any) => {
+        session.eventId = event.id;
+      });
+      results = [...results, ...matchingSessionSearched];
+    });
+
+    //True converts this to an async function
+    const emitter = new EventEmitter(true);
+    setTimeout(() => {
+      emitter.emit(results);
+    }, 100);
+    return emitter;
   }
 }
 
