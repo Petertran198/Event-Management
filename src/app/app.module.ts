@@ -6,6 +6,7 @@ import {
   TOASTR_TOKEN,
   IToastr,
   CollapsibleWellComponent,
+  JQUERY_TOKEN,
 } from './common/index';
 import { EventAppComponent } from './events-app.component';
 import {
@@ -27,6 +28,8 @@ import { AuthService } from './user/auth.service';
 
 // Get the global toastr object
 let toastr: IToastr = window['toastr'];
+// Get the global jquery object
+let jquery = window['$'];
 
 @NgModule({
   declarations: [
@@ -60,6 +63,7 @@ let toastr: IToastr = window['toastr'];
     //Allow for us to create a service for toastr by only calling the global toastr object, and not needing a class
     //when TOASTR_TOKEN is called use the global toastr object we created above,
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQUERY_TOKEN, useValue: jquery },
   ], // <-- To add services here.
 
   bootstrap: [EventAppComponent],
