@@ -8,6 +8,7 @@ import {
   CollapsibleWellComponent,
   JQUERY_TOKEN,
   SimpleModal,
+  ModalTriggerDirective,
 } from './common/index';
 import { EventAppComponent } from './events-app.component';
 import {
@@ -45,6 +46,7 @@ let jquery = window['$'];
     SessionDetailsComponent,
     DurationPipe,
     SimpleModal,
+    ModalTriggerDirective,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [
