@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'simple-modal',
   template: `
-    <div class="modal fade" tabindex="-1" role="dialog" id="simple-modal">
+    <div class="modal fade" tabindex="-1" role="dialog" id="{{ modalId }}">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -36,4 +36,5 @@ import { Component, Input } from '@angular/core';
 })
 export class SimpleModal {
   @Input() title: string;
+  @Input() modalId: string;
 }
