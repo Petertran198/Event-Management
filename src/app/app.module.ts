@@ -7,6 +7,7 @@ import {
   IToastr,
   CollapsibleWellComponent,
   JQUERY_TOKEN,
+  SimpleModal,
 } from './common/index';
 import { EventAppComponent } from './events-app.component';
 import {
@@ -43,6 +44,7 @@ let jquery = window['$'];
     EventDetailComponent,
     SessionDetailsComponent,
     DurationPipe,
+    SimpleModal,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [
