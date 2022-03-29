@@ -34,6 +34,7 @@ export class EventDetailComponent implements OnInit {
     this.route.paramMap.subscribe((parms) => {
       const id = Number(parms.get('id'));
       this.event = this.eventService.getEvent(id);
+      this.isAddingMode = false;
     });
 
     //Another way to add routes to url
