@@ -30,12 +30,14 @@ export class EventDetailComponent implements OnInit {
 
   ngOnInit(): void {
     // Two ways to get routes from url
-
+    //This way will 'listen/subscribe' to see if there are changes to the id param in url and act accordingly
     this.route.paramMap.subscribe((parms) => {
       const id = Number(parms.get('id'));
       this.event = this.eventService.getEvent(id);
     });
+
     //Another way to add routes to url
+    //Does NOT listen to the url and change once url is change but we are still in same component
     // this.event = this.eventService.getEvent(
     //   Number(this.route.snapshot.params['id'])
     // );

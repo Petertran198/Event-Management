@@ -1,4 +1,3 @@
-import { trigger } from '@angular/animations';
 import { Directive, ElementRef, OnInit, Inject, Input } from '@angular/core';
 import { JQUERY_TOKEN } from './jQuery.service';
 @Directive({
