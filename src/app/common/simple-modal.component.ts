@@ -43,12 +43,15 @@ import { JQUERY_TOKEN } from './jQuery.service';
 export class SimpleModal {
   @Input() title: string;
   @Input() modalId: string;
+  @Input() closedOnClick: boolean = true;
   //This will give us the modal element
   @ViewChild('modalElement') modalElement: ElementRef;
 
   constructor(@Inject(JQUERY_TOKEN) private $: any) {}
 
   modalClosed() {
-    this.$(this.modalElement.nativeElement).modal('hide');
+    if (this.closedOnClick) {
+      this.$(this.modalElement.nativeElement).modal('hide');
+    }
   }
 }

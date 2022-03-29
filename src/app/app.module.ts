@@ -22,6 +22,8 @@ import {
   EventRouteActivator,
   EventsListResolver,
   DurationPipe,
+  UpVoteComponent,
+  VoterService,
 } from './events/index';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -47,6 +49,7 @@ let jquery = window['$'];
     DurationPipe,
     SimpleModal,
     ModalTriggerDirective,
+    UpVoteComponent,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [
@@ -61,6 +64,7 @@ let jquery = window['$'];
     EventRouteActivator,
     EventsListResolver,
     AuthService,
+    VoterService,
     // { provide: ..., useValue:..}  long hand syntax {provide: service1, useValue: callService1 }
     // It is saying when service1 is request use callService1 obj to fullfill it
     { provide: 'canDeactivateEvent', useValue: checkIfCanDeactivateEvent },

@@ -1,4 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
+import { AuthService } from 'src/app/user/auth.service';
+import { VoterService } from './voter.service';
 import { ISession } from '../shared';
 
 @Component({
@@ -10,6 +12,9 @@ export class SessionDetailsComponent implements OnChanges {
   @Input() filteredBy: string;
   @Input() sortedBy: string;
   filteredSessions: ISession[];
+
+  constructor(private voterService: VoterService, private auth: AuthService) {}
+
   //ngOnChanges runs/reruns when an @Input changes
   ngOnChanges(): void {
     this.filteredSession(this.filteredBy);
@@ -43,5 +48,21 @@ export class SessionDetailsComponent implements OnChanges {
 
   sortByRatingsDesc(s1, s2) {
     return s2.voters.length - s1.voters.length;
+  }
+
+  toggleVote(session: ISession) {
+    if (this.isUserHasVoted(session)) {
+      console.log('bob');
+      this.voterService.removeVote(session, this.auth.currentUser.userName);
+      console.log(session);
+    } else {
+      this.voterService.addVote(session, this.auth.currentUser.userName);
+    }
+  }
+  isUserHasVoted(session: ISession) {
+    return this.voterService.isUserHasVoted(
+      session,
+      this.auth.currentUser.userName
+    );
   }
 }

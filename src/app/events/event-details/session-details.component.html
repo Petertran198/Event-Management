@@ -1,4 +1,11 @@
 <div class="row" *ngFor="let session of filteredSessions">
+    <div class="col-md-1">
+        <div *ngIf="auth.currentUser">
+            <upvote (vote)="toggleVote(session)" [count]="this.session.voters.length"
+                [voted]="isUserHasVoted(session )">
+            </upvote>
+        </div>
+    </div>
     <div class="col-md-10">
         <collapsible-well [title]="session.name">
             <!-- well-title & well-body are attrbute selectors so we know which elemnt portion to display when u have more than 1 ng-content-->
