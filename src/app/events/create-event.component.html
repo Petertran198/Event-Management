@@ -57,6 +57,8 @@
                     country: ....
                 } 
         -->
+
+        <!--#locationGroup will give us a reference to this specific ngModelGroup so we can use in our multi field validation-->
         <div ngModelGroup="location" validateLocation #locationGroup="ngModelGroup">
             <div class="form-group">
                 <label for="address">Event Location:</label>
@@ -84,6 +86,7 @@
                 (change)="locationGroup.control.controls.address.updateValueAndValidity()" />
             <!--When this input changes we go to locationGroup and get one of their controls and run updateValueAndValidity() method
                 the updateValueAndValidity right now is on address so everytime a change is made to this input it goes to the address input box and rerun its validation. The address validation(validateLocation) will then gets rerun will check if this field is valid or not. This is how u implement MULTI-field validation 
+                * locationGroup.control will give us that specific formGroup which we then called .controls to get an array of all their controls which we than access that formGroup.address control
                 -->
         </div>
         <div class="form-group"
