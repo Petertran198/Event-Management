@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import {
   TOASTR_TOKEN,
   IToastr,
@@ -59,6 +60,7 @@ let jquery = window['$'];
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ], // <-- Used to import other modules
 
   providers: [

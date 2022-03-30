@@ -4,7 +4,7 @@ import { FormGroup, Validator, NG_VALIDATORS } from '@angular/forms';
 @Directive({
   selector: '[validateLocation]',
   //The use of Provider in directive lets angular know that we have a custom validator we want to add to angular's validators
-  //Similar to how we did in appmodule but with multi = true we are not overridding NG_Validators but adding to it
+  //Similar to how we did in appmodule but with multi = true we are not overridding NG_Validators but adding our custom LocationValidator in
   providers: [
     {
       provide: NG_VALIDATORS,
