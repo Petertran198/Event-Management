@@ -60,6 +60,8 @@
         <div ngModelGroup="location" validateLocation #locationGroup="ngModelGroup">
             <div class="form-group">
                 <label for="address">Event Location:</label>
+                <em *ngIf="locationGroup?.invalid && locationGroup?.touched">Either Location or online Url must be
+                    filled</em>
                 <input (ngModel)="newEvent.address" name="address" id="address" type="text" class="form-control"
                     placeholder="Address of event..." />
             </div>
@@ -81,7 +83,7 @@
                 placeholder="Online Url..."
                 (change)="locationGroup.control.controls.address.updateValueAndValidity()" />
             <!--When this input changes we go to locationGroup and get one of their controls and run updateValueAndValidity() method
-                the updateValueAndValidity right now is on address so everytime a change is made to this input it goes to the address input box and rerun its validation. The address validation that gets rerun will check if this field is valid or not. This is how u implement MULTI-field validation 
+                the updateValueAndValidity right now is on address so everytime a change is made to this input it goes to the address input box and rerun its validation. The address validation(validateLocation) will then gets rerun will check if this field is valid or not. This is how u implement MULTI-field validation 
                 -->
         </div>
         <div class="form-group"
