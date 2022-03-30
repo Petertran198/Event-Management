@@ -24,6 +24,7 @@ import {
   DurationPipe,
   UpVoteComponent,
   VoterService,
+  LocationValidatorDirective,
 } from './events/index';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -50,6 +51,7 @@ let jquery = window['$'];
     SimpleModal,
     ModalTriggerDirective,
     UpVoteComponent,
+    LocationValidatorDirective,
   ], // <- When you want to add a component, pipe, or directive u must declare them here
 
   imports: [

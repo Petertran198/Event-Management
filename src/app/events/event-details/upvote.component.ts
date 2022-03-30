@@ -23,11 +23,7 @@ export class UpVoteComponent {
   voteIconColor: string;
   //Used input property setter to read what value voted is and than changed icon color according to that property
   @Input() set voted(value: boolean) {
-    if (value == true) {
-      this.voteIconColor = 'red';
-    } else {
-      this.voteIconColor = 'white';
-    }
+    this.voteIconColor = value == true ? 'red' : 'white';
   }
   @Input() count: number;
   @Output() vote = new EventEmitter();

@@ -57,7 +57,7 @@
                     country: ....
                 } 
         -->
-        <div ngModelGroup="location">
+        <div ngModelGroup="location" validateLocation #locationGroup="ngModelGroup">
             <div class="form-group">
                 <label for="address">Event Location:</label>
                 <input (ngModel)="newEvent.address" name="address" id="address" type="text" class="form-control"
@@ -78,7 +78,11 @@
         <div class="form-group">
             <label for="onlineUrl">Online Url:</label>
             <input (ngModel)="newEvent.onlineUrl" name="onlineUrl" id="onlineUrl" type="text" class="form-control"
-                placeholder="Online Url..." />
+                placeholder="Online Url..."
+                (change)="locationGroup.control.controls.address.updateValueAndValidity()" />
+            <!--When this input changes we go to locationGroup and get one of their controls and run updateValueAndValidity() method
+                the updateValueAndValidity right now is on address so everytime a change is made to this input it goes to the address input box and rerun its validation. The address validation that gets rerun will check if this field is valid or not. This is how u implement MULTI-field validation 
+                -->
         </div>
         <div class="form-group"
             [ngClass]="{'error': newEventForm.controls.imageUrl?.invalid && newEventForm.controls.imageUrl?.touched}">
@@ -93,8 +97,7 @@
             <img />
         </div>
 
-        <button type="submit" class="btn btn-primary">Save</button>
-        <button type="button" [disabled]="newEventForm.invalid" class="btn btn-default"
-            (click)="cancel()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="newEventForm.invalid">Save</button>
+        <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
     </form>
 </div>
