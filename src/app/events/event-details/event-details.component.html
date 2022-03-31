@@ -48,8 +48,8 @@
       <a (click)="toggleAddMode()">Add Session</a>
     </div>
   </div>
-  <session-details *ngIf="this.isAddingMode === false " [sessions]="event?.sessions" [filteredBy]="this.filteredBy"
-    [sortedBy]="this.sortedBy">
+  <session-details [eventId]="event?.id" *ngIf="this.isAddingMode === false " [sessions]="event?.sessions"
+    [filteredBy]="this.filteredBy" [sortedBy]="this.sortedBy">
   </session-details>
   <create-sessions *ngIf="this.isAddingMode" (saveSession)="handleSaveSession($event)"
     (cancelSession)="handleCancelSession()"></create-sessions>

@@ -11,6 +11,7 @@ export class SessionDetailsComponent implements OnChanges {
   @Input() sessions: ISession[];
   @Input() filteredBy: string;
   @Input() sortedBy: string;
+  @Input() eventId: number;
   filteredSessions: ISession[];
 
   constructor(private voterService: VoterService, private auth: AuthService) {}
@@ -52,11 +53,17 @@ export class SessionDetailsComponent implements OnChanges {
 
   toggleVote(session: ISession) {
     if (this.isUserHasVoted(session)) {
-      console.log('bob');
-      this.voterService.removeVote(session, this.auth.currentUser.userName);
-      console.log(session);
+      this.voterService.removeVote(
+        this.eventId,
+        session,
+        this.auth.currentUser.userName
+      );
     } else {
-      this.voterService.addVote(session, this.auth.currentUser.userName);
+      this.voterService.addVote(
+        this.eventId,
+        session,
+        this.auth.currentUser.userName
+      );
     }
   }
   isUserHasVoted(session: ISession) {
