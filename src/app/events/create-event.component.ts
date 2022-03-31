@@ -17,9 +17,10 @@ export class CreateEventComponent {
     if (!formValue.date) {
       formValue.date = Date.now();
     }
-    this.eventService.saveEvent(formValue);
-    this.isDirtyState = false;
-    this.router.navigate(['./events']);
+    this.eventService.saveEvent(formValue).subscribe(() => {
+      this.isDirtyState = false;
+      this.router.navigate(['./events']);
+    });
   }
 
   cancel() {

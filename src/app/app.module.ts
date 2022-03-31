@@ -20,12 +20,12 @@ import {
   SessionDetailsComponent,
   CreateSessionsComponent,
   CreateEventComponent,
-  EventRouteActivator,
   EventsListResolver,
   DurationPipe,
   UpVoteComponent,
   VoterService,
   LocationValidatorDirective,
+  EventResolver,
 } from './events/index';
 
 import { NavbarComponent } from './navbar/navbar.component';
@@ -65,8 +65,8 @@ let jquery = window['$'];
 
   providers: [
     EventService,
-    EventRouteActivator,
     EventsListResolver,
+    EventResolver,
     AuthService,
     VoterService,
     // { provide: ..., useValue:..}  long hand syntax {provide: service1, useValue: callService1 }

@@ -30,9 +30,10 @@ export class NavbarComponent {
   constructor(public auth: AuthService, private eventService: EventService) {}
 
   handleFormSubmit(term) {
-    this.eventService.getSessionsBySearchTerm(term).subscribe((data) => {
-      console.log(data);
-      this.foundSessions = data;
-    });
+    this.eventService
+      .getSessionsBySearchTerm(term)
+      .subscribe((sessions: ISession[]) => {
+        this.foundSessions = sessions;
+      });
   }
 }

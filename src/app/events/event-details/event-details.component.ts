@@ -31,9 +31,8 @@ export class EventDetailComponent implements OnInit {
   ngOnInit(): void {
     // Two ways to get routes from url
     //This way will 'listen/subscribe' to see if there are changes to the id param in url and act accordingly
-    this.route.paramMap.subscribe((parms) => {
-      const id = Number(parms.get('id'));
-      this.event = this.eventService.getEvent(id);
+    this.route.data.forEach((data) => {
+      this.event = data['eventResolvedKey'];
       this.isAddingMode = false;
     });
 
@@ -49,7 +48,8 @@ export class EventDetailComponent implements OnInit {
   }
 
   handleSaveSession(session) {
-    this.eventService.saveSession(this.event, session);
+    this.event.sessions.push(session);
+    this.eventService.saveEvent(this.event).subscribe();
     this.isAddingMode = false;
   }
 
