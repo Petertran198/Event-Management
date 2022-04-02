@@ -2,6 +2,8 @@
   <h1>Login</h1>
   <hr />
   <div class="col-md-4">
+    <div class="alert alert-danger" role="alert" *ngIf="this.isRejectedLogin">Error, please try again</div>
+
     <!-- NgSubmit is angular's way of submitting a form it handles sideeffects of forms like refresh
       To get data from a submitted form we add #loginForm to the form 
       Now #loginForm.values gives us access to the properties we have (ngModel) on
@@ -15,49 +17,25 @@
             [()] = two way binding getting data from both html and component 
         -->
         <!-- We got to put username?.invalid because these properties fields are not always avilable in loginForm.controls -->
-        <em
-          *ngIf="
+        <em *ngIf="
             loginForm.controls.userName?.touched &&
             loginForm.controls.userName?.invalid
-          "
-          >Required</em
-        >
-        <input
-          name="userName"
-          (ngModel)="(userName)"
-          id="firstName"
-          type="text"
-          class="form-control"
-          placeholder="First Name..."
-          required
-        />
+          ">Required</em>
+        <input name="userName" (ngModel)="(userName)" id="firstName" type="text" class="form-control"
+          placeholder="First Name..." required />
       </div>
       <div class="form-group">
         <label for="lastName">Last Name:</label>
-        <em
-          *ngIf="
+        <em *ngIf="
             loginForm.controls.password?.touched &&
             loginForm.controls.password?.invalid
-          "
-          >Required</em
-        >
+          ">Required</em>
 
-        <input
-          name="password"
-          (ngModel)="(password)"
-          id="lastName"
-          type="text"
-          class="form-control"
-          placeholder="Last Name..."
-          required
-        />
+        <input name="password" (ngModel)="(password)" id="lastName" type="text" class="form-control"
+          placeholder="Last Name..." required />
       </div>
 
-      <button
-        type="submit"
-        class="btn btn-primary"
-        [disabled]="loginForm.untouched || loginForm.invalid"
-      >
+      <button type="submit" class="btn btn-primary" [disabled]="loginForm.untouched || loginForm.invalid">
         Save
       </button>
       <button type="button" class="btn btn-default">Cancel</button>
