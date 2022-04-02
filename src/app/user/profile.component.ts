@@ -75,4 +75,10 @@ export class ProfileComponent implements OnInit {
       this.lastName.invalid || (this.firstName.invalid && this.lastName.touched)
     );
   }
+
+  onLogOut() {
+    this.authService.logOut().subscribe(() => {
+      this.router.navigate(['/user/login']);
+    });
+  }
 }
