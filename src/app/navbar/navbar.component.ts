@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { EventService, ISession } from '../events';
+import { Component, Input, OnInit } from '@angular/core';
+import { EventService, IEvent, ISession } from '../events';
 import { AuthService } from '../user/auth.service';
 @Component({
   selector: 'navbar',
@@ -24,6 +24,7 @@ import { AuthService } from '../user/auth.service';
   ],
 })
 export class NavbarComponent {
+  @Input() events: IEvent;
   searchTerm;
   foundSessions: ISession[];
   // We made it public so we can use it in the html
