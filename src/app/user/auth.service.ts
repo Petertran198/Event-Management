@@ -32,5 +32,27 @@ export class AuthService {
   editProfile(firstName, lastName) {
     this.currentUser.firstName = firstName;
     this.currentUser.lastName = lastName;
+    const userInfo = { ...this.currentUser };
+    const options = {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    };
+    return this.http.put(
+      `/api/users/${this.currentUser.id}`,
+      userInfo,
+      options
+    );
+  }
+
+  checkAuthenticatedStatus() {
+    this.http
+      .get('/api/currentIdentity')
+      .pipe(
+        tap((data) => {
+          if (data instanceof Object) {
+            this.currentUser = <IUser>data;
+          }
+        })
+      )
+      .subscribe();
   }
 }

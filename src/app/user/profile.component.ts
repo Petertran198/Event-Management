@@ -50,11 +50,11 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile(form) {
-    this.authService.editProfile(
-      form.controls.firstName.value,
-      form.controls.lastName.value
-    );
-    this.toastr.success('Updated');
+    this.authService
+      .editProfile(form.controls.firstName.value, form.controls.lastName.value)
+      .subscribe(() => {
+        this.toastr.success('Updated');
+      });
   }
 
   onCancel() {
